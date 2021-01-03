@@ -510,4 +510,10 @@ config KHADAS_MCU_FAN_THERMAL
 	  If you say yes here you get support for the FAN controlled
 	  by the Microcontroller found on the Khadas VIM boards.
 
+config REALTEK_THERMAL
+	tristate "Realtek RTL838x thermal sensor support"
+	depends on MACH_REALTEK_RTL || COMPILE_TEST
+	depends on THERMAL_OF
+	help
+	  Support thermal sensor in Realtek RTL838x SoCs
 endif

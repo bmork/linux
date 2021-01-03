@@ -18,6 +18,21 @@
 		#clock-cells = <0>;
 		clock-frequency = <500000000>;
 	};
+
+	thermal-zones {
+		thermal-z0 {
+			polling-delay-passive = <250>;
+			polling-delay = <1000>;
+			thermal-sensors = <&thermal 0>;
+			trips {
+				critical {
+					temperature = <105000>;
+					hysteresis = <2000>;
+					type = "critical";
+				};
+			};
+		};
+	};
 };
 
 &switch_bus {
@@ -31,6 +46,12 @@
 			mask = <0x1>;
 		};
 
+	};
+
+	thermal: thermal@98 {
+		compatible = "realtek,rtl8380-thermal";
+		reg = <0x98 0x10>;
+		#thermal-sensor-cells = <0>;
 	};
 
 	chipid@d0 {
